@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - esbuild
+allowBuilds:
+  esbuild: true
+minimumReleaseAgeExclude:
+  - hono@4.13.13
