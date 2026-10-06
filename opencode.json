@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "mantine": {
+      "type": "local",
+      "command": ["npx"],
+      "args": ["-y", "@mantine/mcp-server"]
+    }
+  }
+}
