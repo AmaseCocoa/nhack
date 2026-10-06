@@ -1,22 +1,15 @@
 {
-  "name": "nhack",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "NODE_ENV=development node --watch --import remix/node-tsx server.ts",
-    "hmr": "NODE_ENV=development node hmr.ts",
-    "start": "NODE_ENV=production node --import remix/node-tsx server.ts",
-    "test": "NODE_ENV=test remix test",
-    "typecheck": "tsc --noEmit"
-  },
-  "engines": {
-    "node": ">=24.3.0"
-  },
-  "dependencies": {
-    "remix": "^3.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "latest",
-    "typescript": "latest"
-  }
+    "scripts": {
+        "dev": "pnpm --filter @nhack-app/web dev"
+    },
+    "dependencies": {
+        "@mantine/core": "^9.6.3",
+        "@mantine/hooks": "^9.6.3",
+        "@tabler/icons-react": "^3.48.0"
+    },
+    "devDependencies": {
+        "postcss": "^8.5.28",
+        "postcss-preset-mantine": "^1.18.0",
+        "postcss-simple-vars": "^7.0.1"
+    }
 }

@@ -1,0 +1,8 @@
+packages:
+  - apps/**
+  
+allowBuilds:
+  esbuild: true
+  lightningcss: true
+
+shamefullyHoist: true
