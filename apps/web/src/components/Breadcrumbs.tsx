@@ -1,34 +1,34 @@
 import {
-  Breadcrumbs as MantineBreadcrumbs,
-  Anchor,
-  Title,
+	Anchor,
+	Breadcrumbs as MantineBreadcrumbs,
+	Title,
 } from "@mantine/core";
 
 type PageItem = {
-  title: string;
-  href: string;
+	title: string;
+	href: string;
 };
 
 type BreadcrumbsProps = {
-  detail: PageItem;
-  items: PageItem[];
+	detail: PageItem;
+	items: PageItem[];
 };
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
-  detail,
-  items = [],
+	detail,
+	items = [],
 }) => {
-  const i = items.map((item, index) => {
-    const idx = index === 0 ? 1 : index++;
-    return <Anchor href={item.href} key={idx}>{item.title.toLowerCase()}</Anchor>;
-  });
-  return (
-    <>
-      <Title order={1}>{detail.title}</Title>
-      <MantineBreadcrumbs separator="/" separatorMargin="md" mt="xs">
-        <Anchor key={0}>{detail.title.toLowerCase()}</Anchor>
-        {i}
-      </MantineBreadcrumbs>
-    </>
-  );
+	return (
+		<>
+			<Title order={1}>{detail.title}</Title>
+			<MantineBreadcrumbs separator="/" separatorMargin="md" mt="xs">
+				{items.map((item) => (
+					<Anchor href={item.href} key={item.href + item.title}>
+						{item.title.toLowerCase()}
+					</Anchor>
+				))}
+				<Anchor key={detail.href}>{detail.title.toLowerCase()}</Anchor>
+			</MantineBreadcrumbs>
+		</>
+	);
 };

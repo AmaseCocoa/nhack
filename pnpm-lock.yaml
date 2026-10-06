@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@mantine/core':
-        specifier: ^9.6.3
-        version: 9.6.3(@mantine/hooks@9.6.3(react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^9.7.0
+        version: 9.7.0(@mantine/hooks@9.7.0(react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@mantine/hooks':
-        specifier: ^9.6.3
-        version: 9.6.3(react@19.3.0)
+        specifier: ^9.7.0
+        version: 9.7.0(react@19.3.0)
       '@tabler/icons-react':
         specifier: ^3.48.0
         version: 3.48.0(react@19.3.0)
@@ -50,17 +50,17 @@ importers:
   apps/web:
     dependencies:
       '@mantine/core':
-        specifier: ^9.6.3
-        version: 9.6.3
+        specifier: ^9.7.0
+        version: 9.7.0(@mantine/hooks@9.7.0(react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@mantine/hooks':
-        specifier: ^9.6.3
-        version: 9.6.3
+        specifier: ^9.7.0
+        version: 9.7.0(react@19.3.0)
       '@nhack-app/api':
         specifier: workspace:*
         version: link:../api
       '@tabler/icons-react':
         specifier: ^3.48.0
-        version: 3.48.0
+        version: 3.48.0(react@19.3.0)
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.3.3(vite@8.3.2(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(sugarss@5.0.1(postcss@8.5.28))(tsx@4.23.15))
@@ -457,15 +457,15 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@mantine/core@9.6.3':
-    resolution: {integrity: sha512-o9xzpkma6RiLbENNU4VoxKnCU4VaFlB6Yh6wAjAUiU329ypPV6tBY7VkVeQQ5Z+e12D3I+NTPrUw43onlYCqTg==}
+  '@mantine/core@9.7.0':
+    resolution: {integrity: sha512-WhCvfXXpYMKV6py05wt0Vlxthtxe4YOzQiVhrrCvWKYDmvhKXgOTDzRdjkGHNji4r+7f7d3nz2XpwbzaZ47R/w==}
     peerDependencies:
-      '@mantine/hooks': 9.6.3
+      '@mantine/hooks': 9.7.0
       react: ^19.2.0
       react-dom: ^19.2.0
 
-  '@mantine/hooks@9.6.3':
-    resolution: {integrity: sha512-b3uJx1p5vlXOmLEgp4OqzC3FUxSIc5bmqPPxPLHsgR6S0aBiqn9psaihJP7u/v//mr3qeCmyMeIwSw9ROu4pXg==}
+  '@mantine/hooks@9.7.0':
+    resolution: {integrity: sha512-3a1w90f1OliaClGRlnPiviJtKxyMiKdVyM8Pd2h6se+LOm9/bgGI+pgoGw/tgv++BSQ4frqv+X7NBlqcY/S7KQ==}
     peerDependencies:
       react: ^19.2.0
 
@@ -2456,10 +2456,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@mantine/core@9.6.3(@mantine/hooks@9.6.3(react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@mantine/core@9.7.0(@mantine/hooks@9.7.0(react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       '@floating-ui/react': 0.27.20(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      '@mantine/hooks': 9.6.3(react@19.3.0)
+      '@mantine/hooks': 9.7.0(react@19.3.0)
       clsx: 2.1.1
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
@@ -2469,7 +2469,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@mantine/hooks@9.6.3(react@19.3.0)':
+  '@mantine/hooks@9.7.0(react@19.3.0)':
     dependencies:
       react: 19.3.0
 

@@ -11,7 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as TimetableRouteImport } from './routes/timetable'
 import { Route as ApiSplatRouteImport } from './routes/api/$'
+import { Route as ReportCurrentRouteImport } from './routes/report/current'
+import { Route as ReportPastRouteImport } from './routes/report/past'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +27,98 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimetableRoute = TimetableRouteImport.update({
+  id: '/timetable',
+  path: '/timetable',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiSplatRoute = ApiSplatRouteImport.update({
   id: '/api/$',
   path: '/api/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportCurrentRoute = ReportCurrentRouteImport.update({
+  id: '/report/current',
+  path: '/report/current',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportPastRoute = ReportPastRouteImport.update({
+  id: '/report/past',
+  path: '/report/past',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/settings': typeof SettingsRoute
+  '/timetable': typeof TimetableRoute
   '/api/$': typeof ApiSplatRoute
+  '/report/current': typeof ReportCurrentRoute
+  '/report/past': typeof ReportPastRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/settings': typeof SettingsRoute
+  '/timetable': typeof TimetableRoute
   '/api/$': typeof ApiSplatRoute
+  '/report/current': typeof ReportCurrentRoute
+  '/report/past': typeof ReportPastRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/settings': typeof SettingsRoute
+  '/timetable': typeof TimetableRoute
   '/api/$': typeof ApiSplatRoute
+  '/report/current': typeof ReportCurrentRoute
+  '/report/past': typeof ReportPastRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/api/$'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/settings'
+    | '/timetable'
+    | '/api/$'
+    | '/report/current'
+    | '/report/past'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/api/$'
-  id: '__root__' | '/' | '/about' | '/api/$'
+  to:
+    | '/'
+    | '/about'
+    | '/settings'
+    | '/timetable'
+    | '/api/$'
+    | '/report/current'
+    | '/report/past'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/settings'
+    | '/timetable'
+    | '/api/$'
+    | '/report/current'
+    | '/report/past'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  SettingsRoute: typeof SettingsRoute
+  TimetableRoute: typeof TimetableRoute
   ApiSplatRoute: typeof ApiSplatRoute
+  ReportCurrentRoute: typeof ReportCurrentRoute
+  ReportPastRoute: typeof ReportPastRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +137,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timetable': {
+      id: '/timetable'
+      path: '/timetable'
+      fullPath: '/timetable'
+      preLoaderRoute: typeof TimetableRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/$': {
       id: '/api/$'
       path: '/api/$'
       fullPath: '/api/$'
       preLoaderRoute: typeof ApiSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/report/current': {
+      id: '/report/current'
+      path: '/report/current'
+      fullPath: '/report/current'
+      preLoaderRoute: typeof ReportCurrentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/report/past': {
+      id: '/report/past'
+      path: '/report/past'
+      fullPath: '/report/past'
+      preLoaderRoute: typeof ReportPastRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,7 +178,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  SettingsRoute: SettingsRoute,
+  TimetableRoute: TimetableRoute,
   ApiSplatRoute: ApiSplatRoute,
+  ReportCurrentRoute: ReportCurrentRoute,
+  ReportPastRoute: ReportPastRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

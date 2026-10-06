@@ -2,10 +2,7 @@ import { Code, Group, ScrollArea } from "@mantine/core";
 import {
 	IconAdjustments,
 	IconCalendarStats,
-	IconFileAnalytics,
 	IconGauge,
-	IconLock,
-	IconNotes,
 	IconPresentationAnalytics,
 } from "@tabler/icons-react";
 import { LinksGroup } from "../NavbarLinksGroup/NavbarLinksGroup";
@@ -14,18 +11,22 @@ import { Logo } from "./Logo";
 import classes from "./Navbar.module.css";
 
 const mockdata = [
-	{ label: "ダッシュボード", icon: IconGauge },
+	{ label: "ダッシュボード", icon: IconGauge, link: "/" },
 	{
 		label: "レポート",
 		icon: IconCalendarStats,
 		initiallyOpened: true,
 		links: [
-			{ label: "今年度", link: "/" },
-			{ label: "過去のレポート", link: "/" },
+			{ label: "今年度", link: "/report/current" },
+			{ label: "過去のレポート", link: "/report/past" },
 		],
 	},
-	{ label: "スクーリング・テスト", icon: IconPresentationAnalytics },
-	{ label: "設定", icon: IconAdjustments },
+	{
+		label: "スクーリング・テスト",
+		icon: IconPresentationAnalytics,
+		link: "/timetable",
+	},
+	{ label: "設定", icon: IconAdjustments, link: "/settings" },
 ];
 
 export function NavbarNested() {
