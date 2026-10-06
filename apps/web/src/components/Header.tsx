@@ -1,10 +1,27 @@
 import { Link } from '@tanstack/react-router'
+import { Burger } from '@mantine/core'
 import ThemeToggle from './ThemeToggle'
 
-export default function Header() {
+type HeaderProps = {
+  withBurger?: boolean
+  opened?: boolean
+  onToggle?: () => void
+}
+
+export default function Header({ withBurger, opened, onToggle }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--header-bg)] px-4 backdrop-blur-lg">
-      <nav className="page-wrap flex flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4">
+    <div className="flex h-full w-full items-center bg-[var(--header-bg)] px-4 backdrop-blur-lg">
+      <nav className="page-wrap flex w-full flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4">
+        {withBurger && onToggle && (
+          <Burger
+            opened={!!opened}
+            onClick={onToggle}
+            hiddenFrom="sm"
+            size="sm"
+            mr={8}
+            aria-label="Toggle navigation"
+          />
+        )}
         <h2 className="m-0 flex-shrink-0 text-base font-semibold tracking-tight">
           <Link
             to="/"
@@ -73,6 +90,6 @@ export default function Header() {
           <ThemeToggle />
         </div>
       </nav>
-    </header>
+    </div>
   )
 }

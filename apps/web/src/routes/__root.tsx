@@ -1,8 +1,16 @@
 import mantineCoreStyles from '@mantine/core/styles.css?url';
 
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router';
-import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
+import {
+  AppShell,
+  ColorSchemeScript,
+  mantineHtmlProps,
+  MantineProvider,
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { Navbar } from '#/components/Navbar/Navbar';
+import Header from '#/components/Header';
+import Footer from '#/components/Footer';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -16,6 +24,8 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const [opened, { toggle }] = useDisclosure();
+
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
@@ -24,8 +34,28 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <MantineProvider>
-          <Navbar />
-          {children}
+          <AppShell
+            header={{ height: 64 }}
+            navbar={{
+              width: 80,
+              breakpoint: 'sm',
+              collapsed: { mobile: !opened },
+            }}
+            padding={0}
+          >
+            <AppShell.Header>
+              <Header withBurger opened={opened} onToggle={toggle} />
+            </AppShell.Header>
+
+            <AppShell.Navbar p="md">
+              <Navbar />
+            </AppShell.Navbar>
+
+            <AppShell.Main>
+              {children}
+              <Footer />
+            </AppShell.Main>
+          </AppShell>
         </MantineProvider>
         <Scripts />
       </body>

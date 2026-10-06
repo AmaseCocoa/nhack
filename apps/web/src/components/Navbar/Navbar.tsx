@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Link, useRouterState } from '@tanstack/react-router';
 import {
   IconCalendarStats,
   IconDeviceDesktopAnalytics,
@@ -17,27 +17,40 @@ interface NavbarLinkProps {
   icon: typeof IconHome2;
   label: string;
   active?: boolean;
+  to?: string;
   onClick?: () => void;
 }
 
-function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
+function NavbarLink({ icon: Icon, label, active, to, onClick }: NavbarLinkProps) {
+  const button = (
+    <UnstyledButton
+      onClick={onClick}
+      className={classes.link}
+      data-active={active || undefined}
+      aria-label={label}
+    >
+      <Icon size={20} stroke={1.5} />
+    </UnstyledButton>
+  );
+
+  const content = to ? (
+    <Link to={to} style={{ textDecoration: 'none' }}>
+      {button}
+    </Link>
+  ) : (
+    button
+  );
+
   return (
     <Tooltip label={label} position="right" transitionProps={{ duration: 0 }}>
-      <UnstyledButton
-        onClick={onClick}
-        className={classes.link}
-        data-active={active || undefined}
-        aria-label={label}
-      >
-        <Icon size={20} stroke={1.5} />
-      </UnstyledButton>
+      {content}
     </Tooltip>
   );
 }
 
-const mockdata = [
-  { icon: IconHome2, label: 'Home' },
-  { icon: IconGauge, label: 'Dashboard' },
+const mockdata: Array<{ icon: typeof IconHome2; label: string; to?: string }> = [
+  { icon: IconHome2, label: 'Home', to: '/' },
+  { icon: IconGauge, label: 'Dashboard', to: '/about' },
   { icon: IconDeviceDesktopAnalytics, label: 'Analytics' },
   { icon: IconCalendarStats, label: 'Releases' },
   { icon: IconUser, label: 'Account' },
@@ -46,16 +59,14 @@ const mockdata = [
 ];
 
 export function Navbar() {
-  const [active, setActive] = useState(2);
+  const routerState = useRouterState();
+  const pathname = routerState.location.pathname;
 
-  const links = mockdata.map((link, index) => (
-    <NavbarLink
-      {...link}
-      key={link.label}
-      active={index === active}
-      onClick={() => setActive(index)}
-    />
-  ));
+  const links = mockdata.map((link) => {
+    const isActive =
+      link.to != null ? (link.to === '/' ? pathname === '/' : pathname.startsWith(link.to)) : false;
+    return <NavbarLink {...link} key={link.label} active={isActive} />;
+  });
 
   return (
     <nav className={classes.navbar}>

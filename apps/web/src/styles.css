@@ -442,6 +442,23 @@ a {
   }
 }
 
+/* Mantine AppShell を既存デザインに合わせ透過化 */
+.mantine-AppShell-header {
+  background: var(--header-bg) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line) !important;
+}
+
+.mantine-AppShell-navbar {
+  background: color-mix(in oklab, var(--surface) 92%, transparent) !important;
+  backdrop-filter: blur(8px);
+  border-right: 1px solid var(--line) !important;
+}
+
+.mantine-AppShell-main {
+  background: transparent !important;
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
   background: color-mix(in oklab, var(--header-bg) 84%, transparent 16%);
