@@ -7,8 +7,8 @@ import {
   mantineHtmlProps,
   MantineProvider,
 } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { Navbar } from '#/components/Navbar/Navbar';
-import Footer from '#/components/Footer';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -22,6 +22,7 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
@@ -35,16 +36,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               width: 80,
               breakpoint: 'sm',
             }}
-            padding={0}
+            padding="md"
           >
-
             <AppShell.Navbar p="md">
               <Navbar />
             </AppShell.Navbar>
 
             <AppShell.Main>
               {children}
-              <Footer />
             </AppShell.Main>
           </AppShell>
         </MantineProvider>
