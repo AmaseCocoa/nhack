@@ -1,4 +1,4 @@
-import { hc } from 'hono/client'
-import type { App } from '@nhack-app/api'
+import type { App } from "@nhack-app/api";
+import { hc } from "hono/client";
 
-export const client = hc<App>('http://localhost:3000')
+export const client = hc<App>("http://localhost:3000");
