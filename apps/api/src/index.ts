@@ -1,9 +1,14 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import type { AuthType } from "./utils/auth";
 
-const app = new Hono()
+import authRouter from "./routes/auth";
 
-app.basePath('/api')
+const app = new Hono<{ Variables: AuthType }>({
+  strict: false,
+}).basePath("/api");
 
-export type App = typeof app;
+const appWithRoutes = app
+  .route("/", authRouter)
+
+export type App = typeof appWithRoutes;
 export default app;
-
