@@ -2,9 +2,8 @@ import { Hono } from 'hono'
 
 const app = new Hono()
 
-app.get('/api/hi', (c) => {
-  return c.text('Hello Hono!')
-})
+app.basePath('/api')
 
 export type App = typeof app;
 export default app;
+
