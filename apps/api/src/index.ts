@@ -8,7 +8,7 @@ const app = new Hono<{ Variables: AuthType }>({
 }).basePath("/api");
 
 const appWithRoutes = app
-  .route("/", authRouter)
+  .route("/auth", authRouter)
 
 export type App = typeof appWithRoutes;
 export default app;
